@@ -35,7 +35,7 @@ def identify_gap(bg,tp,out):
     # 返回缺口的X坐标
     return tl[0] 
 
-# 调整底图大小并保存
+# 调整图片大小并保存
 def resize_and_save_image(path ,content, size):
     image = Image.open(BytesIO(content))
     image = image.resize(size)
