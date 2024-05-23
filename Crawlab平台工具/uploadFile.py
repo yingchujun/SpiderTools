@@ -35,10 +35,11 @@ spiderInfos = [
 # 当前文件所在的目录
 curDirPath = os.path.dirname(__file__)
 
-# # 打开浏览器
+# 打开浏览器
 adminUrl = 'http://crawlab.ztesa.site/#/login'
 page = ChromiumPage()
 page.get(adminUrl)
+page.ele("xpath://div[@class='lang']/span[contains(text(), '中文')]").click()
 page.wait.ele_displayed('@name=username')
 
 # 登录管理平台
@@ -58,6 +59,8 @@ for spiderInfo in spiderInfos:
 
     # 创建爬虫
     page.wait.ele_displayed("xpath://span[@class='menu-item-title' and contains(text(), '爬虫')]")
+    page.wait.ele_displayed("xpath://span[@class='menu-item-title' and contains(text(), '爬虫')]")
+    page.wait(2)
     page.ele("xpath://span[@class='menu-item-title' and contains(text(), '爬虫')]").click()
     page.ele("xpath://button[contains(@title, '添加一个新爬虫')]").click()
     page.ele("xpath://input[@id='name']").input(projectName)
@@ -72,7 +75,9 @@ for spiderInfo in spiderInfos:
 
     # 上传爬虫文件
     page.ele("xpath://span[@class='menu-item-title' and contains(text(), '爬虫')]").click()
+    page.wait(2)
     page.ele("xpath: //tr[@class='el-table__row'][1]//button[@title='查看']").click()
+    page.wait(2)
     page.ele("xpath: //li[@class='el-menu-item files']").click()
     page.ele("xpath: //button[@title='上传文件']").click()
 
